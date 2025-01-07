@@ -16,8 +16,10 @@ import com.example.main_service.model.Course;
 import com.example.main_service.model.User;
 import com.example.main_service.model.UserInput;
 import com.example.main_service.service.UserService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Controller
+@CrossOrigin("*")
 public class UserController {
     
     @Autowired
@@ -50,9 +52,9 @@ public class UserController {
     public User updateUser(@Argument UserInput user,@Argument Integer id){
         User persistUser = userService.getUserById(id);
         if (user.getPassword() == null)
-            BeanUtils.copyProperties(user, persistUser,"password","role");    
+            BeanUtils.copyProperties(user, persistUser,"password","role","image");
         else 
-            BeanUtils.copyProperties(user, persistUser,"role");
+            BeanUtils.copyProperties(user, persistUser,"role","image");
         return userService.updateUser(persistUser);
     }
     

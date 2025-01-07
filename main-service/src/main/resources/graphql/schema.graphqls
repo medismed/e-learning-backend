@@ -4,6 +4,7 @@ type Course  {
     description:String
     link:String
     teacherId:Int
+    teacherlastname:String
 }
 
 type User {
