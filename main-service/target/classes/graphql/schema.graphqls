@@ -1,0 +1,45 @@
+type Course  {
+    id:ID
+    name:String
+    description:String
+    link:String
+    teacherId:Int
+    teacherlastname:String
+}
+
+type User {
+    id:ID
+    firstname:String
+    lastname:String
+    email:String
+    password:String
+    phone:String
+    address:String
+    linkdin:String
+    role:String
+    image:String
+}
+
+type Query{
+    getAllUsers: [User]
+    getAllCourses: [Course]
+    getUserById(id:ID!):User
+    getAllCoursesByTeacherId(teacherId:ID!): [Course]
+}
+
+input UserInput {
+    firstname: String
+    lastname: String
+    email: String
+    password: String
+    phone: String
+    address: String
+    linkdin: String
+    role: String
+    image:String
+}
+
+type Mutation {
+    updateUser(user: UserInput!, id: ID!): User
+    addUser(user: UserInput!): User
+}
